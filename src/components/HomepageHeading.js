@@ -40,7 +40,7 @@ const HomepageHeading = () => (
         content='Tästä vähän lisää tietoa.'
         inverted
       />
-      <Button primary size='huge'>
+      <Button size='huge' color='teal'>
         Lue lisää
         <Icon name='right arrow' />
       </Button>

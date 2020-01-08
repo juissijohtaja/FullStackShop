@@ -17,7 +17,8 @@ import {
   Segment,
   Sidebar,
   Visibility,
-  Form
+  Form,
+  Card
 } from 'semantic-ui-react'
 
 import Products from './Products'
@@ -25,6 +26,8 @@ import ProductForm from './ProductForm'
 import Footer from './Footer'
 import ResponsiveContainer from './ResponsiveContainer'
 import HomepageHeading from './HomepageHeading'
+import ProductCard from './ProductCard'
+
 
 const HomepageLayout = (props) => {
   useEffect(() => {
@@ -67,16 +70,65 @@ const HomepageLayout = (props) => {
               </p>
             </Grid.Column>
             <Grid.Column floated='right' width={6}>
-              <Image bordered rounded size='large' src='https://images.pexels.com/photos/34153/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=350' />
+              <Image bordered rounded size='large' src='https://firebasestorage.googleapis.com/v0/b/fullstackshop.appspot.com/o/camera.jpg?alt=media&token=27ecc85d-83b1-46cf-8daf-928bf0fa1224' />
             </Grid.Column>
           </Grid.Row>
+        </Grid>
+        <Divider
+          as='h4'
+          className='header'
+          horizontal
+          style={{ margin: '3em 0em', textTransform: 'uppercase' }}
+        >
+          <a href='/tuotteet'>Featured Products</a>
+        </Divider>
+        <Grid container columns='equal' stackable>
           <Grid.Row>
-            <Grid.Column textAlign='center'>
+            <Grid.Column>
+              <Header as='h3' style={{ fontSize: '2em' }}>
+              We Help Companies and Companions
+              </Header>
+              <Image bordered rounded size='large' src='https://firebasestorage.googleapis.com/v0/b/fullstackshop.appspot.com/o/camera.jpg?alt=media&token=27ecc85d-83b1-46cf-8daf-928bf0fa1224' />
+              <p style={{ fontSize: '1.33em' }}>
+              We can give your company superpowers to do things that they never thought possible.
+              </p>
+              <Button size='huge'>Check Them Out</Button>
+            </Grid.Column>
+            <Grid.Column>
+              <Header as='h3' style={{ fontSize: '2em' }}>
+              We Help Companies and Companions
+              </Header>
+              <Image bordered rounded size='large' src='https://firebasestorage.googleapis.com/v0/b/fullstackshop.appspot.com/o/camera.jpg?alt=media&token=27ecc85d-83b1-46cf-8daf-928bf0fa1224' />
+              <p style={{ fontSize: '1.33em' }}>
+              We can give your company superpowers to do things that they never thought possible.
+              </p>
+              <Button size='huge'>Check Them Out</Button>
+            </Grid.Column>
+            <Grid.Column>
+              <Header as='h3' style={{ fontSize: '2em' }}>
+              We Help Companies and Companions
+              </Header>
+              <Image bordered rounded size='large' src='https://firebasestorage.googleapis.com/v0/b/fullstackshop.appspot.com/o/camera.jpg?alt=media&token=27ecc85d-83b1-46cf-8daf-928bf0fa1224' />
+              <p style={{ fontSize: '1.33em' }}>
+              We can give your company superpowers to do things that they never thought possible.
+              </p>
               <Button size='huge'>Check Them Out</Button>
             </Grid.Column>
           </Grid.Row>
         </Grid>
       </Segment>
+
+      <Segment style={{ padding: '8em 0em' }} vertical>
+        <Card.Group centered>
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
+        </Card.Group>
+      </Segment>
+
       <Segment style={{ padding: '0em' }} vertical>
         <Grid celled='internally' columns='equal' stackable>
           <Grid.Row textAlign='center'>
@@ -127,25 +179,6 @@ const HomepageLayout = (props) => {
           <Button as='a' size='large'>
           Im Still Quite Interested
           </Button>
-          <div>
-            <h3>Messages Redux</h3>
-            <ul>
-              {props.messages.map(message => <li key={message.id}>{message.text} <Icon link name='remove' color='red' onClick={() => handleRemove(message)} /></li>)}
-            </ul>
-          </div>
-          <Form onSubmit={AddMessage}>
-            <div>
-              <Form.Field>
-                <label>Add message</label>
-                <input
-                  type="text"
-                  value={newMessage}
-                  onChange={({ target }) => setNewMessage(target.value)}
-                />
-              </Form.Field>
-            </div>
-            <Button type='submit'>Save</Button>
-          </Form>
         </Container>
       </Segment>
       <Footer />

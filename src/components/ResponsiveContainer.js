@@ -82,7 +82,7 @@ const DesktopContainer = (props) => {
                     Kirjaudu
                   </Button>
                 }
-                <Button as={NavLink} to='/ostoskori' inverted={!fixed} primary={fixed} style={{ marginLeft: '0.5em' }}>
+                <Button as={NavLink} to='/ostoskori' color={fixed? 'teal' : 'black'} inverted={!fixed} style={{ marginLeft: '0.5em' }}>
                   <i aria-hidden='true' className='shopping basket icon'></i> Ostoskori
                 </Button>
               </Menu.Item>
