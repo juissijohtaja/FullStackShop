@@ -21,7 +21,9 @@ const snapshotToArray = (snapshot) => {
     const product = {
       name: childSnapshot.val().name,
       description: childSnapshot.val().description,
+      image: childSnapshot.val().image,
       price: childSnapshot.val().price,
+      rating: childSnapshot.val().rating,
       category: childSnapshot.val().category,
       friendlyUrl: friendlyUrl(childSnapshot.val().name),
       id: childSnapshot.key

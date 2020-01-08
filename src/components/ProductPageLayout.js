@@ -30,6 +30,8 @@ import {
 
 import Footer from './Footer'
 import ResponsiveContainer from './ResponsiveContainer'
+import Stars from './Stars'
+
 
 const ProductageLayout = (props) => {
   useEffect(() => {
@@ -58,13 +60,14 @@ const ProductageLayout = (props) => {
         <Grid container stackable verticalAlign='top'>
           <Grid.Row>
           <Grid.Column width={6}>
-              <Image bordered rounded size='large' src='https://images.pexels.com/photos/34153/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=350' />
+              <Image bordered rounded size='large' src={productContent.image} />
             </Grid.Column>
             <Grid.Column width={8}>
               <Header as='h3' style={{ fontSize: '2em' }}>
                 {productContent.name}
               </Header>
-              <Header as='h3' style={{ fontSize: '2em' }}>
+              <Stars amount={productContent.rating} />
+              <Header as='h4' style={{ fontSize: '2em' }}>
                 {productContent.price} €
               </Header>
               <Button icon='shopping basket' content='Lisää ostoskoriin' color='teal' onClick={() => addToBasket()} style={{ marginBottom: '2em' }} />

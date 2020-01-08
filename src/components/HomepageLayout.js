@@ -26,7 +26,7 @@ import ProductForm from './ProductForm'
 import Footer from './Footer'
 import ResponsiveContainer from './ResponsiveContainer'
 import HomepageHeading from './HomepageHeading'
-import ProductCard from './ProductCard'
+import ProductCards from './ProductCards'
 
 
 const HomepageLayout = (props) => {
@@ -40,11 +40,6 @@ const HomepageLayout = (props) => {
     e.preventDefault() // <- prevent form submit from reloading the page
     props.createMessage(newMessage)
     setNewMessage('') // <- clear the input
-  }
-
-  const handleRemove = (message) => {
-    //e.preventDefault()
-    props.removeMessage(message)
   }
 
   return(
@@ -119,14 +114,9 @@ const HomepageLayout = (props) => {
       </Segment>
 
       <Segment style={{ padding: '8em 0em' }} vertical>
-        <Card.Group centered>
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-        </Card.Group>
+        <Container>
+          <ProductCards />
+        </Container>
       </Segment>
 
       <Segment style={{ padding: '0em' }} vertical>
