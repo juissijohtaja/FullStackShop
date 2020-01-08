@@ -1,0 +1,36 @@
+#hero {
+    min-height: 600px;
+    padding: 1em 0em;
+    background-color: #222844;
+    background-image: url(https://images.pexels.com/photos/34153/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=350);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+#hero h1 {
+    font-size: 4em;
+    margin-top: 2em;
+    font-weight: normal;
+    margin-bottom: 0;
+}
+#hero h2 {
+    font-size: 1.7em;
+    margin-top: 1.0em;
+    font-weight: normal;
+}
+
+@media screen and (max-width: 768px) {
+    #hero {
+        min-height: 350px;
+    }
+    #hero h1 {
+        font-size: 2em;
+        margin-top: 1.5em;
+        font-weight: normal;
+    }
+    #hero h2 {
+        font-size: 1.2em;
+        margin-top: 0.8em;
+        font-weight: normal;
+    }
+  }
