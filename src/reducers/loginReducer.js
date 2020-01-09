@@ -24,14 +24,17 @@ export const loginUser = (user) => {
       })
     }
   } else {
-    return async dispatch => {
+    return false
+    /* return async dispatch => {
       dispatch({
         type: 'LOGIN_DENIED',
         data: null
       })
-    }
+    } */
   }
 }
+
+
 
 export const logoutUser = () => {
   console.log('logoutUser')

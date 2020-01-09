@@ -1,6 +1,6 @@
 export const loadState = () => {
   try {
-    const serializedState = localStorage.getItem('oldSchoolShopApp')
+    const serializedState = localStorage.getItem('WebShopApp')
     if (serializedState === null) {
       return undefined
     }
@@ -14,7 +14,7 @@ export const loadState = () => {
 export const saveState = (state) => {
   try {
     const serializedState = JSON.stringify(state)
-    localStorage.setItem('oldSchoolShopApp', serializedState)
+    localStorage.setItem('WebShopApp', serializedState)
   } catch (err) {
     // ignore write errors
     console.log('saveStateerror', err)

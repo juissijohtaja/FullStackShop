@@ -6,6 +6,8 @@ import productReducer from './reducers/productReducer'
 import messageReducer from './reducers/messageReducer'
 import shoppingcartReducer from './reducers/shoppingcartReducer'
 import loginReducer from './reducers/loginReducer'
+import notificationReducer from './reducers/notificationReducer'
+
 
 import { loadState, saveState } from './localStorage'
 
@@ -13,7 +15,8 @@ const reducer = combineReducers({
   products: productReducer,
   messages: messageReducer,
   shoppingcart: shoppingcartReducer,
-  loggeduser: loginReducer
+  loggeduser: loginReducer,
+  notification: notificationReducer
 })
 
 const persistedState = loadState()

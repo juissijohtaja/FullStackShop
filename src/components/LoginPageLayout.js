@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { loginUser } from '../reducers/loginReducer'
+import { notificationSet } from '../reducers/notificationReducer'
 
 import {
   Button,
@@ -28,19 +29,24 @@ const LoginPageLayout = (props) => {
   const [username, setUserName] = useState('')
   const [password, setPassword] = useState('')
 
-  const handleLogin = (e) => {
-    e.preventDefault() // <- prevent form submit from reloading the page
+  const handleLogin = async (event) => {
+    event.preventDefault() // <- prevent form submit from reloading the page
 
     if (username && password) {
-      const user = { username, password }
-      console.log('user', user)
-      props.loginUser(user)
+      try {
+        const user = { username, password }
+        props.loginUser(user)
+        console.log('perse', props.loggeduser)
+        props.notificationSet('Login successful.', 'positive', 3)
 
-      //clear the input
-      setUserName('')
-      setPassword('')
+        //clear the input
+        setUserName('')
+        setPassword('')
+      } catch(exception) {
+        props.notificationSet('Wrong credentials.', 'negative', 3)
+      }
     } else {
-      alert('Error: username or password missing')
+      props.notificationSet('Username or password missing.', 'warning', 3)
     }
   }
 
@@ -90,5 +96,5 @@ const mapStateToProps = (state) => {
   }
 }
 export default connect(
-  mapStateToProps, { loginUser }
+  mapStateToProps, { loginUser, notificationSet }
 )(withRouter(LoginPageLayout))

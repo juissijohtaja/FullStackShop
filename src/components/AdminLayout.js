@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { fetchMessages, createMessage, removeMessage } from '../reducers/messageReducer'
 import { logoutUser } from '../reducers/loginReducer'
+import { notificationSet } from '../reducers/notificationReducer'
 
 import {
   Button,
@@ -28,8 +29,9 @@ import ResponsiveContainer from './ResponsiveContainer'
 
 const AdminLayout = (props) => {
 
-  const handleLogout = (e) => {
+  const handleLogout = () => {
     props.logoutUser()
+    props.notificationSet('Logout successful.', 'positive', 3)
   }
 
   return(
@@ -62,5 +64,5 @@ const mapStateToProps = (state) => {
   }
 }
 export default connect(
-  mapStateToProps, { fetchMessages, createMessage, removeMessage, logoutUser }
+  mapStateToProps, { fetchMessages, createMessage, removeMessage, logoutUser, notificationSet }
 )(withRouter(AdminLayout))

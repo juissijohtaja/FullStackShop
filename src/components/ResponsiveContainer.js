@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import React, { useState, useEffect } from 'react'
+import Notification from './Notification'
 import {
   Button,
   Container,
@@ -92,6 +93,7 @@ const DesktopContainer = (props) => {
         </Segment>
       </Visibility>
 
+      <Notification/>
       {props.children}
 
     </Responsive>
@@ -176,8 +178,8 @@ const ResponsiveContainer = (props) => {
 
   return(
     <div>
-      <DesktopContainer loggeduser={loggeduser}>{props.children}</DesktopContainer>
-      <MobileContainer loggeduser={loggeduser}>{props.children}</MobileContainer>
+      <DesktopContainer loggeduser={loggeduser} notification>{props.children}</DesktopContainer>
+      <MobileContainer loggeduser={loggeduser} notification>{props.children}</MobileContainer>
     </div>
   )
 }
@@ -190,7 +192,8 @@ ResponsiveContainer.propTypes = {
 const mapStateToProps = (state) => {
   return {
     messages: state.messages,
-    loggeduser: state.loggeduser
+    loggeduser: state.loggeduser,
+    notification: state.notification
   }
 }
 export default connect(
