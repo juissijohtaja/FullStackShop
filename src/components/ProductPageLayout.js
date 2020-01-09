@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { fetchProducts, createProduct, removeProduct } from '../reducers/productReducer'
 import { addProductToCart, increaseAmountInCart } from '../reducers/shoppingcartReducer'
+import { notificationSet } from '../reducers/notificationReducer'
 
 import {
   Button,
@@ -52,6 +53,8 @@ const ProductageLayout = (props) => {
         props.increaseAmountInCart(itemToUpdate)
         console.log('Product already in cart')
     }
+    props.notificationSet('Tuote lisätty ostoskoriin.', 'positive', 3)
+
   }
 
   const ProductSegment = () => {
@@ -86,13 +89,7 @@ const ProductageLayout = (props) => {
 
   const ProductSpinner = () => {
     return (
-      <Segment style={{ padding: '8em 0em' }} vertical>
-        <Container text>
-          <Header as='h3' style={{ fontSize: '2em' }}>
-            <i aria-hidden="true" className='circle notch loading icon'></i>
-          </Header>
-        </Container>
-      </Segment>
+      <Segment loading style={{ padding: '12em 0em' }} vertical />
     )
   }
 
@@ -108,9 +105,10 @@ const mapStateToProps = (state) => {
   return {
     messages: state.messages,
     products: state.products,
-    shoppingcart: state.shoppingcart
+    shoppingcart: state.shoppingcart,
+    notification: state.notification
   }
 }
 export default connect(
-  mapStateToProps, { fetchProducts, createProduct, removeProduct, addProductToCart, increaseAmountInCart }
+  mapStateToProps, { fetchProducts, createProduct, removeProduct, addProductToCart, increaseAmountInCart, notificationSet }
 )(withRouter(ProductageLayout))

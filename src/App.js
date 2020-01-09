@@ -39,7 +39,7 @@ const App = (props) => {
 
   return (
     <Router>
-      <Route exact path="/" component={HomepageLayout} render={() =>
+      <Route exact path="/" render={() =>
         <HomepageLayout />
       } />
       <Route exact path="/tuotteet" render={() =>

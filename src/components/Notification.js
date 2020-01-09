@@ -12,12 +12,13 @@ const StyledMessage = styled(Message)`
 
 const Notification = (props) => {
   console.log('Notification:', props.notification)
+
   if (props.notification === null) {
     return null
   }
   return (
     <Container>
-      <StyledMessage className={props.notification.style} header={props.notification.text} />
+      <StyledMessage color={props.notification.style === 'positive' ? 'teal' : 'orange'} header={props.notification.text} />
     </Container>
   )
 }

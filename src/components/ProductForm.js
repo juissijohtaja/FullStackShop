@@ -23,12 +23,15 @@ const ProductForm = (props) => {
   const [description, setDescription] = useState('')
   const [price, setPrice] = useState('')
   const [category, setCategory] = useState('')
+  const [image, setImage] = useState('')
+  const [rating, setRating] = useState('')
+
 
   const AddProduct = (e) => {
     e.preventDefault() // <- prevent form submit from reloading the page
 
     if (name && description && price) {
-      const newProduct = { name, description, price, category }
+      const newProduct = { name, description, price, category, image, rating }
       console.log('newProduct', newProduct)
       /* Send the message to Firebase */
       props.createProduct(newProduct)
@@ -38,6 +41,8 @@ const ProductForm = (props) => {
       setDescription('')
       setPrice('')
       setCategory('')
+      setImage('')
+      setRating('')
 
     } else {
       alert('Error: name, description or price missing')
@@ -75,6 +80,20 @@ const ProductForm = (props) => {
           <input
             value={category}
             onChange={({ target }) => setCategory(target.value)}
+          />
+        </Form.Field>
+        <Form.Field>
+          <label>Kuvan URL</label>
+          <input
+            value={image}
+            onChange={({ target }) => setImage(target.value)}
+          />
+        </Form.Field>
+        <Form.Field>
+          <label>Arvosana 1-5</label>
+          <input
+            value={rating}
+            onChange={({ target }) => setRating(target.value)}
           />
         </Form.Field>
         <Button type='submit'>Tallenna</Button>

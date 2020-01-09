@@ -36,7 +36,6 @@ const LoginPageLayout = (props) => {
       try {
         const user = { username, password }
         props.loginUser(user)
-        console.log('perse', props.loggeduser)
         props.notificationSet('Login successful.', 'positive', 3)
 
         //clear the input
@@ -46,7 +45,7 @@ const LoginPageLayout = (props) => {
         props.notificationSet('Wrong credentials.', 'negative', 3)
       }
     } else {
-      props.notificationSet('Username or password missing.', 'warning', 3)
+      props.notificationSet('Username or password missing.', 'negative', 3)
     }
   }
 

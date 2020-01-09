@@ -47,7 +47,7 @@ const ProductsLayout = (props) => {
             horizontal
             style={{ margin: '0em 0em 3em', textTransform: 'uppercase' }}
           >
-            Uusimmat Tuotteet
+            Parhaaksi arvioidut tuotteet
           </Divider>
           <ProductCards />
         </Container>

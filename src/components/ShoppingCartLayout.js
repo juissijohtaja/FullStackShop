@@ -70,10 +70,10 @@ const ShoppingCartLayout = (props) => {
           <Header as='h2' style={{ fontSize: '2em' }}>
           Ostoskori
           </Header>
-          <Table celled>
+          <Table basic='very'>
             <Table.Header>
               <Table.Row>
-                <Table.HeaderCell>Nimi</Table.HeaderCell>
+                <Table.HeaderCell colSpan='2'>Tuote</Table.HeaderCell>
                 <Table.HeaderCell>Hinta</Table.HeaderCell>
                 <Table.HeaderCell>Lukumäärä</Table.HeaderCell>
                 <Table.HeaderCell>Välisumma</Table.HeaderCell>
@@ -82,7 +82,8 @@ const ShoppingCartLayout = (props) => {
             </Table.Header>
             <Table.Body>
               {props.shoppingcart.map(item =>
-                <Table.Row key={item.product.name}>
+                <Table.Row key={item.product.name} verticalAlign='top'>
+                  <Table.Cell><Image src={item.product.image} size='small'/></Table.Cell>
                   <Table.Cell><ListItem as={Link} to={`/tuotteet/${item.product.friendlyUrl}`} >{item.product.name}</ListItem></Table.Cell>
                   <Table.Cell>{item.product.price} €</Table.Cell>
                   <Table.Cell>

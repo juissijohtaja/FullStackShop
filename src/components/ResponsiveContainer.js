@@ -159,7 +159,9 @@ const MobileContainer = (props) => {
           </Container>
         </Segment>
 
+        <Notification/>
         {props.children}
+
       </Sidebar.Pusher>
     </Responsive>
   )

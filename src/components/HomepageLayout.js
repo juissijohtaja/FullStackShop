@@ -115,7 +115,7 @@ const HomepageLayout = (props) => {
 
       <Segment style={{ padding: '8em 0em' }} vertical>
         <Container>
-          <ProductCards />
+          <ProductCards amount='6' />
         </Container>
       </Segment>
 
