@@ -33,7 +33,7 @@ const snapshotToArray = (snapshot) => {
   return returnArr
 }
 
-let productsRef = fire.database().ref('products')
+const productsRef = fire.database().ref('products')
 
 export const fetchProducts = () => {
   return async dispatch => {

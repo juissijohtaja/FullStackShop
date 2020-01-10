@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { addProductToCart, increaseAmountInCart, decreaseAmountInCart, removeProductFromCart, removeAllProductsFromCart } from '../reducers/shoppingcartReducer'
+import { createOrder } from '../reducers/orderReducer'
 import { notificationSet } from '../reducers/notificationReducer'
 
 import {
@@ -69,6 +70,9 @@ const ShoppingCartLayout = (props) => {
 
   const handleSendOrder = () => {
     //e.preventDefault()
+    const customer = { name, address }
+    const order = { shoppingcart: props.shoppingcart, customer }
+    props.createOrder(order)
     props.removeAllProductsFromCart()
     props.notificationSet('Tilaus lähetetty.', 'positive', 3)
   }
@@ -191,5 +195,5 @@ const mapStateToProps = (state) => {
   }
 }
 export default connect(
-  mapStateToProps, { addProductToCart, increaseAmountInCart, decreaseAmountInCart, removeProductFromCart, removeAllProductsFromCart, notificationSet }
+  mapStateToProps, { addProductToCart, increaseAmountInCart, decreaseAmountInCart, removeProductFromCart, removeAllProductsFromCart, notificationSet, createOrder }
 )(withRouter(ShoppingCartLayout))

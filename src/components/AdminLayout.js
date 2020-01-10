@@ -26,6 +26,8 @@ import Products from './Products'
 import ProductForm from './ProductForm'
 import Footer from './Footer'
 import ResponsiveContainer from './ResponsiveContainer'
+import Orders from './Orders'
+
 
 const AdminLayout = (props) => {
 
@@ -49,6 +51,7 @@ const AdminLayout = (props) => {
           </p>
           <Products />
           <ProductForm />
+          <Orders />
         </Container>
       </Segment>
       <Footer />
