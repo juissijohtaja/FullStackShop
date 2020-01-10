@@ -72,7 +72,7 @@ const ProductageLayout = (props) => {
               <Header as='h4' style={{ fontSize: '2em' }}>
                 {productContent.price} €
               </Header>
-              <Button icon='shopping basket' content='Lisää ostoskoriin' color='teal' onClick={() => addToBasket()} style={{ marginBottom: '2em' }} />
+              <Button fluid size='big' icon='shopping basket' content='Lisää ostoskoriin' color='teal' onClick={() => addToBasket()} style={{ marginBottom: '2em' }} />
               <p style={{ fontSize: '1.33em' }}>
                 {productContent.description}
               </p>
