@@ -9,6 +9,8 @@ const shoppingcartReducer = (state = [], action) => {
     return stateCopy.filter(item => item.product.id !== action.data.id)
   case 'UPDATE_CART':
     return stateCopy.map(item => item.product.id === action.data.product.id ? action.data : item)
+  case 'EMPTY_CART':
+    return []
   default:
     return state
   }
@@ -34,6 +36,16 @@ export const removeProductFromCart = (cartProduct) => {
     dispatch({
       type: 'REMOVE_PRODUCT_FROM_CART',
       data: cartProduct
+    })
+  }
+}
+
+export const removeAllProductsFromCart = () => {
+  console.log('removeAllProductsFromCart')
+  return async dispatch => {
+    dispatch({
+      type: 'EMPTY_CART',
+      data: []
     })
   }
 }

@@ -54,7 +54,6 @@ const ProductageLayout = (props) => {
         console.log('Product already in cart')
     }
     props.notificationSet('Tuote lisätty ostoskoriin.', 'positive', 3)
-
   }
 
   const ProductSegment = () => {
