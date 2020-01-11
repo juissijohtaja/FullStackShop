@@ -77,7 +77,7 @@ const ProductageLayout = (props) => {
                 {productContent.description}
               </p>
               <p style={{ fontSize: '1.33em' }}>
-                {productContent.category}
+              <Icon name='tag' color='grey' /> {productContent.category}
               </p>
             </Grid.Column>
           </Grid.Row>

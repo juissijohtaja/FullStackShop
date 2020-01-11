@@ -21,6 +21,7 @@ const snapshotToArray = (snapshot) => {
     const order = {
       customer: childSnapshot.val().customer,
       shoppingcart: childSnapshot.val().shoppingcart,
+      dispatched: childSnapshot.val().dispatched,
       id: childSnapshot.key
     }
     returnArr.push(order)

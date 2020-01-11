@@ -19,7 +19,8 @@ import {
   Visibility,
   Form,
   Table,
-  Label
+  Label,
+  Checkbox
 } from 'semantic-ui-react'
 
 import {
@@ -39,23 +40,47 @@ const Orders = (props) => {
   }
 
   return (
-    <Container>
+    <Segment vertical>
       <Header as='h2' style={{ fontSize: '2em' }}>
           Tilaukset
       </Header>
       {props.orders.map(order =>
-        <Segment key={order.customer.name}>
-          <Container>
-            <List>
-              <List.Item>
-                <Label basic color='teal' horizontal>Nimi</Label> {order.customer.name}
-              </List.Item>
-              <List.Item>
-                <Label basic color='teal' horizontal>Osoite</Label> {order.customer.address}
-              </List.Item>
-            </List>
-          </Container>
-          <Table celled>
+        <Segment key={order.customer.name} color={order.dispatched ? 'teal' : 'orange'} padded raised style={{ marginBottom: '2em' }}>
+          <Table basic='very'>
+            <Table.Header>
+              <Table.Row>
+                <Table.HeaderCell>
+                  Tila
+                </Table.HeaderCell>
+                <Table.HeaderCell>
+                  {order.dispatched ? 'Lähetetty' : 'Käsittelyssä'}
+                </Table.HeaderCell>
+                <Table.HeaderCell textAlign='right'>
+                  <Checkbox toggle checked={order.dispatched} />
+                </Table.HeaderCell>
+              </Table.Row>
+            </Table.Header>
+            <Table.Body>
+              <Table.Row>
+                <Table.Cell>
+                  Nimi
+                </Table.Cell>
+                <Table.Cell colSpan='2'>
+                  {order.customer.name}
+                </Table.Cell>
+              </Table.Row>
+              <Table.Row>
+                <Table.Cell>
+                  Osoite
+                </Table.Cell>
+                <Table.Cell colSpan='2'>
+                  {order.customer.address}
+                </Table.Cell>
+              </Table.Row>
+            </Table.Body>
+          </Table>
+
+          <Table basic='very'>
             <Table.Header>
               <Table.Row>
                 <Table.HeaderCell>Kuva</Table.HeaderCell>
@@ -81,10 +106,10 @@ const Orders = (props) => {
               )}
             </Table.Body>
           </Table>
-          <Icon link name='trash alternate' color='red' onClick={() => handleRemove(order)} />
+          <Button fluid><Icon link name='trash alternate' color='red' onClick={() => handleRemove(order)} /> Poista tilaus</Button>
         </Segment>
       )}
-    </Container>
+    </Segment>
   )
 }
 

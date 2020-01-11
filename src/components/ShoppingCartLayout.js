@@ -71,7 +71,7 @@ const ShoppingCartLayout = (props) => {
   const handleSendOrder = () => {
     //e.preventDefault()
     const customer = { name, address }
-    const order = { shoppingcart: props.shoppingcart, customer }
+    const order = { shoppingcart: props.shoppingcart, customer, dispatched: false }
     props.createOrder(order)
     props.removeAllProductsFromCart()
     props.notificationSet('Tilaus lähetetty.', 'positive', 3)

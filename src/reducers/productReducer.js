@@ -26,6 +26,7 @@ const snapshotToArray = (snapshot) => {
       rating: childSnapshot.val().rating,
       category: childSnapshot.val().category,
       friendlyUrl: friendlyUrl(childSnapshot.val().name),
+      publishDate: childSnapshot.val().publishDate,
       id: childSnapshot.key
     }
     returnArr.push(product)

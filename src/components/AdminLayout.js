@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { fetchMessages, createMessage, removeMessage } from '../reducers/messageReducer'
@@ -18,7 +19,8 @@ import {
   Segment,
   Sidebar,
   Visibility,
-  Form
+  Form,
+  Tab
 } from 'semantic-ui-react'
 import { withRouter } from 'react-router-dom'
 
@@ -36,10 +38,16 @@ const AdminLayout = (props) => {
     props.notificationSet('Logout successful.', 'positive', 3)
   }
 
+  const panes = [
+    { menuItem: { key: 'tuotteet', icon: 'camera', content: 'Tuotteet' }, render: () => <Tab.Pane><Products /></Tab.Pane> },
+    { menuItem: { key: 'lisaatuote', icon: 'plus square', content: 'Lisää tuote' }, render: () => <Tab.Pane><ProductForm /></Tab.Pane> },
+    { menuItem: { key: 'tilaukset', icon: 'cube', content: 'Tilaukset' }, render: () => <Tab.Pane><Orders /></Tab.Pane> },
+  ]
+
   return(
     <ResponsiveContainer>
-      <Segment style={{ padding: '8em 0em' }} vertical>
-        <Container text>
+      <Segment>
+        <Container>
           <Header as='h3' style={{ fontSize: '2em' }}>
           Ylläpito
           </Header>
@@ -49,9 +57,7 @@ const AdminLayout = (props) => {
           <p style={{ fontSize: '1.33em' }}>
             <Button color='orange' onClick={() => handleLogout()}><i aria-hidden='true' className='log out icon'></i> Kirjaudu ulos</Button>
           </p>
-          <Products />
-          <ProductForm />
-          <Orders />
+          <Tab panes={panes} />
         </Container>
       </Segment>
       <Footer />

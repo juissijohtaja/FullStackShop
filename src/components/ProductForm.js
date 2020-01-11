@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { fetchProducts, createProduct, removeProduct } from '../reducers/productReducer'
+import { notificationSet } from '../reducers/notificationReducer'
+
 import {
   Button,
   Container,
@@ -26,15 +28,21 @@ const ProductForm = (props) => {
   const [image, setImage] = useState('')
   const [rating, setRating] = useState('')
 
+  console.log('date', new Date().toJSON().slice(0,10).replace(/-/g,'/'))
+  const kakka = ['2030/01/11', '2020/01/21', '2025/01/11']
+  console.log('date normal', kakka)
+  console.log('date sort', kakka.sort(function(a, b){return b-a}))
 
   const AddProduct = (e) => {
     e.preventDefault() // <- prevent form submit from reloading the page
 
     if (name && description && price) {
-      const newProduct = { name, description, price, category, image, rating }
+      const publishDate = new Date().toJSON().slice(0,10).replace(/-/g,'/')
+      const newProduct = { name, description, price, category, image, rating, publishDate }
       console.log('newProduct', newProduct)
       /* Send the message to Firebase */
       props.createProduct(newProduct)
+      props.notificationSet('Product added.', 'positive', 3)
 
       //clear the input
       setName('')
@@ -50,7 +58,7 @@ const ProductForm = (props) => {
   }
 
   return (
-    <Segment>
+    <Container>
       <h2>Lisää tuote</h2>
       <Form onSubmit={AddProduct}>
         <Form.Field>
@@ -98,16 +106,17 @@ const ProductForm = (props) => {
         </Form.Field>
         <Button type='submit'>Tallenna</Button>
       </Form>
-    </Segment>
+    </Container>
   )
 }
 
 const mapStateToProps = (state) => {
   return {
     messages: state.messages,
-    products: state.products
+    products: state.products,
+    notification: state.notification
   }
 }
 export default connect(
-  mapStateToProps, { fetchProducts, createProduct, removeProduct }
+  mapStateToProps, { fetchProducts, createProduct, removeProduct, notificationSet }
 )(ProductForm)
