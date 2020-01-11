@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { fetchProducts, createProduct, removeProduct } from '../reducers/productReducer'
 import { notificationSet } from '../reducers/notificationReducer'
@@ -17,7 +17,8 @@ import {
   Segment,
   Sidebar,
   Visibility,
-  Form
+  Form,
+  Message
 } from 'semantic-ui-react'
 
 const ProductForm = (props) => {
@@ -26,17 +27,23 @@ const ProductForm = (props) => {
   const [price, setPrice] = useState('')
   const [category, setCategory] = useState('')
   const [image, setImage] = useState('')
-  const [rating, setRating] = useState('')
+  const [rating, setRating] = useState(0)
+  const [formConfirmed, setFormConfirmed] = useState(false)
 
-  console.log('date', new Date().toJSON().slice(0,10).replace(/-/g,'/'))
-  const kakka = ['2030/01/11', '2020/01/21', '2025/01/11']
-  console.log('date normal', kakka)
-  console.log('date sort', kakka.sort(function(a, b){return b-a}))
+  useEffect(() => {
+    if(name && description && price && category && image && rating) {
+      setFormConfirmed(true)
+      console.log('formConfirmed', formConfirmed)
+    } else {
+      setFormConfirmed(false)
+      console.log('formConfirmed', formConfirmed)
+    }
+  })
 
   const AddProduct = (e) => {
     e.preventDefault() // <- prevent form submit from reloading the page
 
-    if (name && description && price) {
+    if (formConfirmed) {
       const publishDate = new Date().toJSON().slice(0,10).replace(/-/g,'/')
       const newProduct = { name, description, price, category, image, rating, publishDate }
       console.log('newProduct', newProduct)
@@ -53,58 +60,79 @@ const ProductForm = (props) => {
       setRating('')
 
     } else {
-      alert('Error: name, description or price missing')
+      alert('Lomakkeesta puuttuu tietoja. Täytä kaikki vaaditut kentät.')
     }
   }
+
+  const options = [
+    { key: '1', text: '1', value: 1 },
+    { key: '2', text: '2', value: 2 },
+    { key: '3', text: '3', value: 3 },
+    { key: '4', text: '4', value: 4 },
+    { key: '5', text: '5', value: 5 }
+  ]
 
   return (
     <Container>
       <h2>Lisää tuote</h2>
-      <Form onSubmit={AddProduct}>
-        <Form.Field>
-          <label>Nimi</label>
-          <input
-            value={name}
-            onChange={({ target }) => setName(target.value)}
-          />
-        </Form.Field>
-        <Form.Field>
-          <label>Kuvaus</label>
-          <input
-            value={description}
-            onChange={({ target }) => setDescription(target.value)}
-          />
-        </Form.Field>
-        <Form.Field>
-          <label>Hinta</label>
-          <input
-            type='number'
-            value={price}
-            onChange={({ target }) => setPrice(Number(target.value))}
-          />
-        </Form.Field>
-        <Form.Field>
-          <label>Kategoria</label>
-          <input
-            value={category}
-            onChange={({ target }) => setCategory(target.value)}
-          />
-        </Form.Field>
-        <Form.Field>
-          <label>Kuvan URL</label>
-          <input
-            value={image}
-            onChange={({ target }) => setImage(target.value)}
-          />
-        </Form.Field>
-        <Form.Field>
-          <label>Arvosana 1-5</label>
-          <input
-            value={rating}
-            onChange={({ target }) => setRating(target.value)}
-          />
-        </Form.Field>
-        <Button type='submit'>Tallenna</Button>
+      <Form onSubmit={AddProduct} size='big' className={formConfirmed ? 'success' : 'warning'}>
+        <Form.Input
+          required
+          className={name? '': 'error'}
+          label='Nimi'
+          value={name}
+          onChange={({ target }) => setName(target.value)}
+        />
+        <Form.TextArea
+          required
+          className={description? '': 'error'}
+          label='Kuvaus'
+          value={description}
+          onChange={({ target }) => setDescription(target.value)}
+        />
+        <Form.Input
+          required
+          className={price? '': 'error'}
+          label='Hinta'
+          type='number'
+          value={price}
+          onChange={({ target }) => setPrice(Number(target.value))}
+        />
+        <Form.Input
+          required
+          className={category? '': 'error'}
+          label='Kategoria'
+          value={category}
+          onChange={({ target }) => setCategory(target.value)}
+        />
+        <Form.Input
+          required
+          className={image? '': 'error'}
+          label='Kuvan URL'
+          value={image}
+          onChange={({ target }) => setImage(target.value)}
+        />
+        <Form.Select
+          required
+          fluid
+          className={rating? '': 'error'}
+          label='Arvosana'
+          options={options}
+          value={rating}
+          placeholder='Valitse'
+          onChange={(e, { value }) => setRating(value)}
+        />
+        <Button type='submit' fluid color='teal' size='big'>Tallenna</Button>
+        <Message
+          success
+          header='Kaikki kunnossa!'
+          content="Lomake on täytetty oikein ja voidaan lähettää."
+        />
+        <Message
+          warning
+          header='Tarkista lomake'
+          content="Lomake ei ole täytetty oikein ja sitä ei voida vielä lähettää."
+        />
       </Form>
     </Container>
   )

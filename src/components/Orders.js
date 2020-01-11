@@ -45,11 +45,11 @@ const Orders = (props) => {
           Tilaukset
       </Header>
       {props.orders.map(order =>
-        <Segment key={order.customer.name} color={order.dispatched ? 'teal' : 'orange'} padded raised style={{ marginBottom: '2em' }}>
-          <Table basic='very'>
+        <Segment key={order.id} color={order.dispatched ? 'teal' : 'orange'} padded style={{ margin: '3em 0 4em' }}>
+          <Table basic='very' size='large'>
             <Table.Header>
               <Table.Row>
-                <Table.HeaderCell>
+                <Table.HeaderCell width={2}>
                   Tila
                 </Table.HeaderCell>
                 <Table.HeaderCell>
@@ -79,11 +79,12 @@ const Orders = (props) => {
               </Table.Row>
             </Table.Body>
           </Table>
+          <Header>Tuotteet</Header>
 
-          <Table basic='very'>
+          <Table color='grey'>
             <Table.Header>
               <Table.Row>
-                <Table.HeaderCell>Kuva</Table.HeaderCell>
+                <Table.HeaderCell width={2}>Kuva</Table.HeaderCell>
                 <Table.HeaderCell>Nimi</Table.HeaderCell>
                 <Table.HeaderCell>Hinta</Table.HeaderCell>
                 <Table.HeaderCell>Lukumäärä</Table.HeaderCell>
@@ -104,9 +105,19 @@ const Orders = (props) => {
                   <Table.Cell>{item.product.price * item.amount} €</Table.Cell>
                 </Table.Row>
               )}
+              <Table.Row>
+                <Table.Cell colSpan='3' />
+                <Table.Cell>
+                  <Header as='h4'>Kokonaissumma</Header>
+                </Table.Cell>
+                <Table.Cell>
+                  <Header as='h4'>{order.cartTotal} €</Header>
+                </Table.Cell>
+                <Table.Cell />
+              </Table.Row>
             </Table.Body>
           </Table>
-          <Button fluid><Icon link name='trash alternate' color='red' onClick={() => handleRemove(order)} /> Poista tilaus</Button>
+          <Button onClick={() => handleRemove(order)} basic size='tiny' color='grey'><Icon link name='trash alternate' /> Poista tilaus</Button>
         </Segment>
       )}
     </Segment>
