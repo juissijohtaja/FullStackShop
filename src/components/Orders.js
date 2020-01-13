@@ -41,12 +41,12 @@ const Orders = (props) => {
 
   return (
     <Segment vertical>
-      <Header as='h2' style={{ fontSize: '2em' }}>
+      <Header as='h2' size='large'>
           Tilaukset
       </Header>
       {props.orders.map(order =>
-        <Segment key={order.id} color={order.dispatched ? 'teal' : 'orange'} padded style={{ margin: '3em 0 4em' }}>
-          <Table basic='very' size='large'>
+        <Segment key={order.id} padded style={{ margin: '3em 0 4em' }}>
+          <Table size='large' color={order.dispatched ? 'teal' : 'orange'} >
             <Table.Header>
               <Table.Row>
                 <Table.HeaderCell width={2}>
@@ -60,12 +60,16 @@ const Orders = (props) => {
                 </Table.HeaderCell>
               </Table.Row>
             </Table.Header>
+          </Table>
+
+          <Header>Yhteystiedot</Header>
+          <Table basic>
             <Table.Body>
               <Table.Row>
-                <Table.Cell>
+                <Table.Cell width={2}>
                   Nimi
                 </Table.Cell>
-                <Table.Cell colSpan='2'>
+                <Table.Cell>
                   {order.customer.name}
                 </Table.Cell>
               </Table.Row>
@@ -73,15 +77,16 @@ const Orders = (props) => {
                 <Table.Cell>
                   Osoite
                 </Table.Cell>
-                <Table.Cell colSpan='2'>
+                <Table.Cell>
                   {order.customer.address}
                 </Table.Cell>
               </Table.Row>
             </Table.Body>
           </Table>
+
           <Header>Tuotteet</Header>
 
-          <Table color='grey'>
+          <Table>
             <Table.Header>
               <Table.Row>
                 <Table.HeaderCell width={2}>Kuva</Table.HeaderCell>
@@ -113,7 +118,6 @@ const Orders = (props) => {
                 <Table.Cell>
                   <Header as='h4'>{order.cartTotal} €</Header>
                 </Table.Cell>
-                <Table.Cell />
               </Table.Row>
             </Table.Body>
           </Table>
