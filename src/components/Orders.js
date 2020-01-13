@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import { fetchOrders, createOrder, removeOrder } from '../reducers/orderReducer'
+import { fetchOrders, createOrder, removeOrder, toggleOrderStatus } from '../reducers/orderReducer'
+import { notificationSet } from '../reducers/notificationReducer'
 
 import {
   Button,
@@ -39,6 +40,12 @@ const Orders = (props) => {
     props.removeOrder(order)
   }
 
+  const handleStatusToggle = (order) => {
+    console.log('handleStatusToggle')
+    props.toggleOrderStatus(order)
+    props.notificationSet('Status updated.', 'positive', 3)
+  }
+
   return (
     <Segment vertical>
       <Header as='h2' size='large'>
@@ -56,7 +63,7 @@ const Orders = (props) => {
                   {order.dispatched ? 'Lähetetty' : 'Käsittelyssä'}
                 </Table.HeaderCell>
                 <Table.HeaderCell textAlign='right'>
-                  <Checkbox toggle checked={order.dispatched} />
+                  <Checkbox toggle checked={order.dispatched} onClick={() => handleStatusToggle(order)} />
                 </Table.HeaderCell>
               </Table.Row>
             </Table.Header>
@@ -121,7 +128,8 @@ const Orders = (props) => {
               </Table.Row>
             </Table.Body>
           </Table>
-          <Button onClick={() => handleRemove(order)} basic size='tiny' color='grey'><Icon link name='trash alternate' /> Poista tilaus</Button>
+          <Button className={order.dispatched ? '' : 'disabled'} onClick={() => handleRemove(order)} basic size='tiny' color='grey'><Icon link name='trash alternate' />Poista tilaus</Button>
+          {order.dispatched ? <Label color='teal' tag>Tilauksen voi poistaa</Label> : <Label color='orange' tag>Lähetä tilaus ennen poistamista</Label>}
         </Segment>
       )}
     </Segment>
@@ -136,5 +144,5 @@ const mapStateToProps = (state) => {
   }
 }
 export default connect(
-  mapStateToProps, { fetchOrders, createOrder, removeOrder  }
+  mapStateToProps, { fetchOrders, createOrder, removeOrder, toggleOrderStatus, notificationSet  }
 )(withRouter(Orders))

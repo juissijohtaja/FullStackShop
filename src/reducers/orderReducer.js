@@ -1,5 +1,4 @@
 import fire from '../fire'
-import friendlyUrl from 'friendly-url'
 
 const orderReducer = (state = [], action) => {
   console.log('ACTION: ', action)
@@ -9,6 +8,8 @@ const orderReducer = (state = [], action) => {
   case 'FETCH_ORDERS':
     return action.data
   case 'REMOVE_ORDER':
+    return state
+  case 'TOGGLE_ORDER_STATUS':
     return state
   default:
     return state
@@ -63,6 +64,24 @@ export const removeOrder = (order) => {
     dispatch({
       type: 'REMOVE_ORDER',
       data: order
+    })
+  }
+}
+
+export const toggleOrderStatus = (order) => {
+  console.log('toggleOrderStatus order', order)
+  console.log('toggleOrderStatus dispatched before', order.dispatched)
+  console.log('toggleOrderStatus id', order.id)
+  return async dispatch => {
+    const changedOrder = {
+      ...order,
+      dispatched: !order.dispatched
+    }
+    console.log('toggleOrderStatus dispatched after', changedOrder.dispatched)
+    ordersRef.child(changedOrder.id).update({ dispatched: changedOrder.dispatched })
+    dispatch({
+      type: 'TOGGLE_ORDER_STATUS',
+      data: changedOrder
     })
   }
 }
