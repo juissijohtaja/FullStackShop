@@ -2,7 +2,8 @@
     min-height: 600px;
     padding: 1em 0em;
     background-color: #222844;
-    background-image: url(https://images.pexels.com/photos/34153/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=350);
+    background-image: url(https://firebasestorage.googleapis.com/v0/b/fullstackshop.appspot.com/o/hero%2Fhero-green-bike3.jpg?alt=media&token=6ded2198-b24b-4c83-81f6-8bb02d493886);
+    /* background-image: url(https://firebasestorage.googleapis.com/v0/b/fullstackshop.appspot.com/o/hero%2Fhero-red-bike2.jpg?alt=media&token=1b46075d-da01-4f7b-a7b3-1205c1b7e965); */
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;

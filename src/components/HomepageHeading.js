@@ -32,16 +32,16 @@ const HomepageHeading = () => (
     <Container text>
       <Header
         as='h1'
-        content='Onpa hyvät tarjoukset'
+        content='Kaupungin vihrein kiituri'
         inverted
       />
       <Header
         as='h2'
-        content='Tästä vähän lisää tietoa.'
+        content='Tyylikäs retropyörä nyt saatavilla.'
         inverted
       />
       <Button size='huge' color='teal'>
-        Lue lisää
+        Osta tästä
         <Icon name='right arrow' />
       </Button>
     </Container>

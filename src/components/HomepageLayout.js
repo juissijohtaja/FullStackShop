@@ -21,6 +21,11 @@ import {
   Card
 } from 'semantic-ui-react'
 
+import {
+  BrowserRouter as Router,
+  Route, Link, Redirect, withRouter, NavLink
+} from 'react-router-dom'
+
 import Products from './Products'
 import ProductForm from './ProductForm'
 import Footer from './Footer'
@@ -44,76 +49,52 @@ const HomepageLayout = (props) => {
 
   return(
     <ResponsiveContainer>
+
       <HomepageHeading />
-      <Segment style={{ padding: '8em 0em' }} vertical>
+
+      <Segment basic style={{ padding: '6em 0em 4em' }}>
         <Grid container stackable verticalAlign='middle'>
           <Grid.Row>
             <Grid.Column width={8}>
               <Header as='h3' style={{ fontSize: '2em' }}>
-              We Help Companies and Companions
+              Pentax Spotmatic
               </Header>
               <p style={{ fontSize: '1.33em' }}>
-              We can give your company superpowers to do things that they never thought possible.
-              Let us delight your customers and empower your needs... through pure data analytics.
+                Ajaton klassikko Pentax Spotmatic filmikamera kuuluu jokaisen itseään kunnioittavan valokuvaajan työkalupakkiin.
               </p>
-              <Header as='h3' style={{ fontSize: '2em' }}>
-              We Make Bananas That Can Dance
-              </Header>
               <p style={{ fontSize: '1.33em' }}>
-              You thought it was the stuff of dreams, but even bananas can be
-              bioengineered.
+                Irrottaudu tekoälyn kahleista - manuaalitarkennuksen ansiosta luovuus on sinun käsissäsi.
               </p>
+              <Button as={Link} to='/tuotteet/pentax-spotmatic' color='teal'>Lue lisää</Button>
             </Grid.Column>
             <Grid.Column floated='right' width={6}>
-              <Image bordered rounded size='large' src='https://firebasestorage.googleapis.com/v0/b/fullstackshop.appspot.com/o/camera.jpg?alt=media&token=27ecc85d-83b1-46cf-8daf-928bf0fa1224' />
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
-        <Divider
-          as='h4'
-          className='header'
-          horizontal
-          style={{ margin: '3em 0em', textTransform: 'uppercase' }}
-        >
-          <a href='/tuotteet'>Featured Products</a>
-        </Divider>
-        <Grid container columns='equal' stackable>
-          <Grid.Row>
-            <Grid.Column>
-              <Header as='h3' style={{ fontSize: '2em' }}>
-              We Help Companies and Companions
-              </Header>
-              <Image bordered rounded size='large' src='https://firebasestorage.googleapis.com/v0/b/fullstackshop.appspot.com/o/camera.jpg?alt=media&token=27ecc85d-83b1-46cf-8daf-928bf0fa1224' />
-              <p style={{ fontSize: '1.33em' }}>
-              We can give your company superpowers to do things that they never thought possible.
-              </p>
-              <Button size='huge'>Check Them Out</Button>
-            </Grid.Column>
-            <Grid.Column>
-              <Header as='h3' style={{ fontSize: '2em' }}>
-              We Help Companies and Companions
-              </Header>
-              <Image bordered rounded size='large' src='https://firebasestorage.googleapis.com/v0/b/fullstackshop.appspot.com/o/camera.jpg?alt=media&token=27ecc85d-83b1-46cf-8daf-928bf0fa1224' />
-              <p style={{ fontSize: '1.33em' }}>
-              We can give your company superpowers to do things that they never thought possible.
-              </p>
-              <Button size='huge'>Check Them Out</Button>
-            </Grid.Column>
-            <Grid.Column>
-              <Header as='h3' style={{ fontSize: '2em' }}>
-              We Help Companies and Companions
-              </Header>
-              <Image bordered rounded size='large' src='https://firebasestorage.googleapis.com/v0/b/fullstackshop.appspot.com/o/camera.jpg?alt=media&token=27ecc85d-83b1-46cf-8daf-928bf0fa1224' />
-              <p style={{ fontSize: '1.33em' }}>
-              We can give your company superpowers to do things that they never thought possible.
-              </p>
-              <Button size='huge'>Check Them Out</Button>
+              <Image
+                bordered
+                rounded
+                size='large'
+                as={Link}
+                to='/tuotteet/pentax-spotmatic'
+                label={{
+                  color: 'orange',
+                  content: 'Kuukauden tuote',
+                  icon: 'camera',
+                  ribbon: true,
+                }}
+                src='https://firebasestorage.googleapis.com/v0/b/fullstackshop.appspot.com/o/pentax-spotmatic.jpg?alt=media&token=7de5b907-9f25-4d55-8f99-38ba844baa6d' />
             </Grid.Column>
           </Grid.Row>
         </Grid>
       </Segment>
 
-      <Segment style={{ padding: '8em 0em' }} vertical>
+      <Segment vertical style={{ padding: '0em 0em 8em' }}>
+        <Divider
+          as='h4'
+          className='header'
+          horizontal
+          style={{ margin: '4em 0em', textTransform: 'uppercase' }}
+        >
+          <a href='/tuotteet'>Uusimmat tuotteet</a>
+        </Divider>
         <Container>
           <ProductCards amount='6' />
         </Container>

@@ -43,7 +43,7 @@ const AdminLayout = (props) => {
   }
 
   const panes = [
-    { menuItem: { key: 'tuotteet', icon: 'camera', content: 'Tuotteet' }, render: () => <Tab.Pane><Products /></Tab.Pane> },
+    { menuItem: { key: 'tuotteet', icon: 'camera', content: 'Tuotteet' }, render: () => <Tab.Pane><Products /></Tab.Pane>  },
     { menuItem: { key: 'lisaatuote', icon: 'plus square', content: 'Lisää tuote' }, render: () => <Tab.Pane><ProductForm /></Tab.Pane> },
     { menuItem: { key: 'tilaukset', icon: 'cube', content: 'Tilaukset' }, render: () => <Tab.Pane><Orders /></Tab.Pane> },
   ]

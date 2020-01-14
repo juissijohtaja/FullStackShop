@@ -13,13 +13,14 @@ import {
   Segment,
   Sidebar,
   Visibility,
-  Form
+  Form,
+  Tab
 } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import {
   BrowserRouter as Router,
-  Route, Link, Redirect
+  Route, Link, Redirect, Switch
 } from 'react-router-dom'
 
 import './App.css'
@@ -31,7 +32,6 @@ import MessagePageLayout from './components/MessagePageLayout'
 import ShoppingCartLayout from './components/ShoppingCartLayout'
 import LoginPageLayout from './components/LoginPageLayout'
 import AdminLayout from './components/AdminLayout'
-
 
 import { fetchMessages } from './reducers/messageReducer'
 
