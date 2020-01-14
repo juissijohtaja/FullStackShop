@@ -9,6 +9,11 @@ import {
   Segment,
 } from 'semantic-ui-react'
 
+import {
+  BrowserRouter as Router,
+  Route, Link, Redirect, withRouter, NavLink
+} from 'react-router-dom'
+
 import './HomepageHeading.css'
 
 
@@ -40,7 +45,7 @@ const HomepageHeading = () => (
         content='Tyylikäs retropyörä nyt saatavilla.'
         inverted
       />
-      <Button size='huge' color='teal'>
+      <Button size='huge' color='teal' as={Link} to='/tuotteet/vihreae-sinkula-polkupyoerae' >
         Osta tästä
         <Icon name='right arrow' />
       </Button>
