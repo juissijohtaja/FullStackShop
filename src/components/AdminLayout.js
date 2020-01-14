@@ -22,7 +22,11 @@ import {
   Form,
   Tab
 } from 'semantic-ui-react'
-import { withRouter } from 'react-router-dom'
+
+import {
+  BrowserRouter as Router,
+  Route, Link, Redirect, withRouter, NavLink
+} from 'react-router-dom'
 
 import Products from './Products'
 import ProductForm from './ProductForm'

@@ -27,7 +27,7 @@ const ProductForm = (props) => {
   const [price, setPrice] = useState('')
   const [category, setCategory] = useState('')
   const [image, setImage] = useState('')
-  const [rating, setRating] = useState(0)
+  const [rating, setRating] = useState('')
   const [formConfirmed, setFormConfirmed] = useState(false)
 
   useEffect(() => {
@@ -64,7 +64,7 @@ const ProductForm = (props) => {
     }
   }
 
-  const options = [
+  const ratingOptions = [
     { key: '1', text: '1', value: 1 },
     { key: '2', text: '2', value: 2 },
     { key: '3', text: '3', value: 3 },
@@ -72,10 +72,19 @@ const ProductForm = (props) => {
     { key: '5', text: '5', value: 5 }
   ]
 
+  const categoryOptions = [
+    { key: 'hifi', text: 'hifi', value: 'hifi' },
+    { key: 'valokuvaus', text: 'valokuvaus', value: 'valokuvaus' },
+    { key: 'kellot', text: 'kellot', value: 'kellot' },
+    { key: 'polkupyörät', text: 'polkupyörät', value: 'polkupyörät' },
+    { key: 'ulkoilu', text: 'ulkoilu', value: 'ulkoilu' },
+    { key: 'koti', text: 'koti', value: 'koti' }
+  ]
+
   return (
     <Container>
       <h2>Lisää tuote</h2>
-      <Form onSubmit={AddProduct} size='big' className={formConfirmed ? 'success' : 'warning'}>
+      <Form onSubmit={AddProduct} className={formConfirmed ? 'success' : 'warning'}>
         <Form.Input
           required
           className={name? '': 'error'}
@@ -98,12 +107,15 @@ const ProductForm = (props) => {
           value={price}
           onChange={({ target }) => setPrice(Number(target.value))}
         />
-        <Form.Input
+        <Form.Select
           required
+          fluid
           className={category? '': 'error'}
           label='Kategoria'
+          options={categoryOptions}
           value={category}
-          onChange={({ target }) => setCategory(target.value)}
+          placeholder='Valitse vaihtoehto'
+          onChange={(e, { value }) => setCategory(value)}
         />
         <Form.Input
           required
@@ -117,9 +129,9 @@ const ProductForm = (props) => {
           fluid
           className={rating? '': 'error'}
           label='Arvosana'
-          options={options}
+          options={ratingOptions}
           value={rating}
-          placeholder='Valitse'
+          placeholder='Valitse vaihtoehto'
           onChange={(e, { value }) => setRating(value)}
         />
         <Button type='submit' fluid color='teal' size='big'>Tallenna</Button>
