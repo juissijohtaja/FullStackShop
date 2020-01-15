@@ -24,12 +24,9 @@ const getWidth = () => {
 }
 
 console.log('HomepageHeading getWidth', getWidth())
-/* Heads up! HomepageHeading uses inline styling, however it's not the best practice. Use CSS or styled components for
- * such things.
- */
+
 const HomepageHeading = () => (
   <Segment
-    //inverted
     vertical
     textAlign='center'
     id='hero'
