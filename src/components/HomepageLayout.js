@@ -53,21 +53,9 @@ const HomepageLayout = (props) => {
       <HomepageHeading />
 
       <Segment basic style={{ padding: '6em 0em 4em' }}>
-        <Grid container stackable verticalAlign='middle'>
+        <Grid container stackable verticalAlign='top' columns='equal'>
           <Grid.Row>
-            <Grid.Column width={8}>
-              <Header as='h3' style={{ fontSize: '2em' }}>
-              Pentax Spotmatic
-              </Header>
-              <p style={{ fontSize: '1.33em' }}>
-                Ajaton klassikko Pentax Spotmatic filmikamera kuuluu jokaisen itseään kunnioittavan valokuvaajan työkalupakkiin.
-              </p>
-              <p style={{ fontSize: '1.33em' }}>
-                Irrottaudu tekoälyn kahleista - manuaalitarkennuksen ansiosta luovuus on sinun käsissäsi.
-              </p>
-              <Button as={Link} to='/tuotteet/pentax-spotmatic' color='teal'>Lue lisää</Button>
-            </Grid.Column>
-            <Grid.Column floated='right' width={6}>
+            <Grid.Column>
               <Image
                 bordered
                 rounded
@@ -81,6 +69,18 @@ const HomepageLayout = (props) => {
                   ribbon: true,
                 }}
                 src='https://firebasestorage.googleapis.com/v0/b/fullstackshop.appspot.com/o/pentax-spotmatic.jpg?alt=media&token=7de5b907-9f25-4d55-8f99-38ba844baa6d' />
+            </Grid.Column>
+            <Grid.Column>
+              <Header as='h3' style={{ fontSize: '2em' }}>
+              Pentax Spotmatic
+              </Header>
+              <p style={{ fontSize: '1.33em' }}>
+                Ajaton klassikko Pentax Spotmatic filmikamera kuuluu jokaisen itseään kunnioittavan valokuvaajan työkalupakkiin.
+              </p>
+              <p style={{ fontSize: '1.33em' }}>
+                Irrottaudu tekoälyn kahleista - manuaalitarkennuksen ansiosta luovuus on sinun käsissäsi.
+              </p>
+              <Button as={Link} to='/tuotteet/pentax-spotmatic' color='teal'>Lue lisää</Button>
             </Grid.Column>
           </Grid.Row>
         </Grid>
@@ -100,22 +100,21 @@ const HomepageLayout = (props) => {
         </Container>
       </Segment>
 
-      <Segment style={{ padding: '0em' }} vertical>
+      <Segment vertical secondary color='teal'>
         <Grid celled='internally' columns='equal' stackable>
           <Grid.Row textAlign='center'>
             <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
-              <Header as='h3' style={{ fontSize: '2em' }}>
-              What a Company
+              <Header as='h3' size='huge'>
+                <Icon name='shipping fast'/> Huippunopea toimitus
               </Header>
-              <p style={{ fontSize: '1.33em' }}>That is what they all say about us</p>
+              <p style={{ fontSize: '1.33em' }}>Tilaamasi tuotteet saapuvat kotiisi silmänräpäyksessä.</p>
             </Grid.Column>
             <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
-              <Header as='h3' style={{ fontSize: '2em' }}>
-              I shouldnt have gone with their competitor.
+              <Header as='h3' size='huge'>
+                <Icon name='bullhorn'/> Aina halvat hinnat
               </Header>
               <p style={{ fontSize: '1.33em' }}>
-                <Image avatar src='https://images.pexels.com/photos/34153/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=350' />
-                <b>Nan</b> Chief Fun Officer Acme Toys
+                Parempia tarjouksia saa hakea.
               </p>
             </Grid.Column>
           </Grid.Row>

@@ -22,11 +22,11 @@
 
 @media screen and (max-width: 768px) {
     #hero {
-        min-height: 350px;
+        min-height: 450px;
     }
     #hero h1 {
         font-size: 2em;
-        margin-top: 1.5em;
+        margin-top: 3.5em;
         font-weight: normal;
     }
     #hero h2 {

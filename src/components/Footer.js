@@ -17,6 +17,11 @@ import {
   Form
 } from 'semantic-ui-react'
 
+import {
+  BrowserRouter as Router,
+  Route, Link, Redirect, withRouter, NavLink
+} from 'react-router-dom'
+
 const Footer = () => {
   //console.log('Footer render')
 
@@ -45,11 +50,12 @@ const Footer = () => {
             </Grid.Column>
             <Grid.Column width={7}>
               <Header as='h4' inverted>
-                Footer Header
+                Tietoja sivustosta
               </Header>
               <p>
-                Extra space for a call to action inside the footer that could help re-engage users.
+                Tämä sivusto on Full Stack -websovelluskehitys kurssin harjoitustyö. Sivustolla näkyvät tuotteet eivät ole oikeasti myynnissä.
               </p>
+              <p><a target='_blank' rel="noopener noreferrer" href='https://fullstackopen.com/'><Icon name='external'/> Full Stack Open</a></p>
             </Grid.Column>
           </Grid.Row>
         </Grid>
