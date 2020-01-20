@@ -47,11 +47,11 @@ const ProductageLayout = (props) => {
     //e.preventDefault()
     const itemToUpdate = props.shoppingcart.find(item => item.product.id === productContent.id)
     if (!itemToUpdate) {
-        console.log('Product added to cart')
+        console.log('Tuote lisätty ostoskoriin')
         props.addProductToCart({ product: productContent, amount: 1 })
     } else {
         props.increaseAmountInCart(itemToUpdate)
-        console.log('Product already in cart')
+        console.log('Tuotteen määrää ostoskorissa lisätty.')
     }
     props.notificationSet('Tuote lisätty ostoskoriin.', 'positive', 3)
   }

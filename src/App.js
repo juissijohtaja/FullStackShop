@@ -45,6 +45,15 @@ const App = (props) => {
       <Route exact path="/tuotteet" render={() =>
         <ProductsLayout />
       } />
+      <Route exact path="/valokuvaus" render={() =>
+        <ProductsLayout category='valokuvaus' />
+      } />
+      <Route exact path="/polkupyorat" render={() =>
+        <ProductsLayout category='polkupyörät' />
+      } />
+      <Route exact path="/hifi" render={() =>
+        <ProductsLayout category='hifi' />
+      } />
       <Route path="/tuotteet/:id" render={() =>
         <ProductPageLayout />
       } />

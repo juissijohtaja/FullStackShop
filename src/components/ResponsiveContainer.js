@@ -15,7 +15,8 @@ import {
   Segment,
   Sidebar,
   Visibility,
-  Label
+  Label,
+  Dropdown
 } from 'semantic-ui-react'
 
 import {
@@ -68,8 +69,14 @@ const DesktopContainer = (props) => {
           >
             <Container>
               <Menu.Item as={NavLink} to='/' exact>Etusivu</Menu.Item>
-              <Menu.Item as={NavLink} to='/tuotteet'>Tuotteet</Menu.Item>
-              <Menu.Item as={NavLink} to='/viestit'>Viestit</Menu.Item>
+              <Dropdown item text='Tuotteet'>
+                <Dropdown.Menu>
+                  <Dropdown.Item as={NavLink} to='/tuotteet'>Kaikki</Dropdown.Item>
+                  <Dropdown.Item as={NavLink} to='/valokuvaus'>Valokuvaus</Dropdown.Item>
+                  <Dropdown.Item as={NavLink} to='/polkupyorat'>Polkupyörät</Dropdown.Item>
+                  <Dropdown.Item as={NavLink} to='/hifi'>Hifi</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
               <Menu.Item position='right'>
                 {props.loggeduser.username ?
                   <Button as={NavLink} to='/yllapito' inverted={!fixed}>
@@ -122,8 +129,10 @@ const MobileContainer = (props) => {
         visible={sidebarOpened}
       >
         <Menu.Item as={NavLink} to='/' exact>Etusivu</Menu.Item>
-        <Menu.Item as={NavLink} to='/tuotteet'>Tuotteet</Menu.Item>
-        <Menu.Item as={NavLink} to='/viestit' exact>Viestit</Menu.Item>
+        <Menu.Item as={NavLink} to='/tuotteet'>Kaikki tuotteet</Menu.Item>
+        <Menu.Item as={NavLink} to='/valokuvaus'>Valokuvaus</Menu.Item>
+        <Menu.Item as={NavLink} to='/polkupyorat'>Polkupyörät</Menu.Item>
+        <Menu.Item as={NavLink} to='/hifi'>Hifi</Menu.Item>
       </Sidebar>
 
       <Sidebar.Pusher dimmed={sidebarOpened}>
