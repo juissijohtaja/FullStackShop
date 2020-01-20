@@ -43,11 +43,11 @@ const ProductCard = (props) => {
     return stars
   } */
 
-  const amount = props.amount ? props.amount : 12
+  const amount = props.amount ? props.amount : 18
 
   return (
     <Card.Group centered stackable>
-      {props.products.slice(0, amount).sort((a, b) => b.rating - a.rating).map(product =>
+      {props.products.filter(item => props.category ? item.category === props.category : true).slice(0, amount).sort((a, b) => b.rating - a.rating).map(product =>
         <Card as={Link} to={`/tuotteet/${product.friendlyUrl}`} key={product.name}>
           <Image src={product.image} wrapped ui={false} />
           <Card.Content>
@@ -73,7 +73,6 @@ const ProductCard = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    messages: state.messages,
     products: state.products
   }
 }

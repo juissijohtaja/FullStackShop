@@ -39,7 +39,7 @@ const ProductsLayout = (props) => {
 
   return(
     <ResponsiveContainer>
-      <Segment style={{ padding: '8em 0em' }} vertical>
+      <Segment style={{ padding: '4em 0em' }} vertical>
         <Container>
           <Divider
             as='h4'
@@ -50,6 +50,32 @@ const ProductsLayout = (props) => {
             Parhaaksi arvioidut tuotteet
           </Divider>
           <ProductCards />
+        </Container>
+      </Segment>
+      <Segment style={{ padding: '4em 0em' }} vertical>
+        <Container>
+          <Divider
+            as='h4'
+            className='header'
+            horizontal
+            style={{ margin: '0em 0em 3em', textTransform: 'uppercase' }}
+          >
+            polkupyörät
+          </Divider>
+          <ProductCards category='polkupyörät' />
+        </Container>
+      </Segment>
+      <Segment style={{ padding: '4em 0em' }} vertical>
+        <Container>
+          <Divider
+            as='h4'
+            className='header'
+            horizontal
+            style={{ margin: '0em 0em 3em', textTransform: 'uppercase' }}
+          >
+            valokuvaus
+          </Divider>
+          <ProductCards category='valokuvaus' />
         </Container>
       </Segment>
       <Footer />

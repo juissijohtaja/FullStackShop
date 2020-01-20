@@ -15,6 +15,7 @@ import {
   Segment,
   Sidebar,
   Visibility,
+  Label
 } from 'semantic-ui-react'
 
 import {
@@ -42,6 +43,8 @@ const DesktopContainer = (props) => {
     console.log('showFixedMenu')
     setFixed(true)
   }
+
+  console.log('cartItems', props.cartItems)
 
   return (
     <Responsive getWidth={getWidth} minWidth={Responsive.onlyTablet.minWidth}>
@@ -77,7 +80,7 @@ const DesktopContainer = (props) => {
                   </Button>
                 }
                 <Button as={NavLink} to='/ostoskori' color={fixed? 'teal' : 'black'} inverted={!fixed} style={{ marginLeft: '0.5em' }}>
-                  <i aria-hidden='true' className='shopping basket icon'></i> Ostoskori
+                  <Icon aria-hidden='true' name='shopping basket' /> Ostoskori {props.cartItems>0 ? <Label color='red' size='small' floating>{props.cartItems}</Label> : null}
                 </Button>
               </Menu.Item>
 
@@ -145,7 +148,7 @@ const MobileContainer = (props) => {
                   </Button>
                 }
                 <Button as={NavLink} to='/ostoskori' inverted style={{ marginLeft: '0.5em' }}>
-                  <i aria-hidden="true" className="shopping basket icon"></i> Ostoskori
+                  <Icon aria-hidden='true' name='shopping basket' /> Ostoskori {props.cartItems>0 ? <Label color='red' size='small' floating>{props.cartItems}</Label> : null}
                 </Button>
               </Menu.Item>
             </Menu>
@@ -165,16 +168,29 @@ MobileContainer.propTypes = {
 }
 
 const ResponsiveContainer = (props) => {
+  const [cartItems, setCartItems] = useState(0)
   const loggeduser = props.loggeduser
 
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
 
+  useEffect(() => {
+    const countCartItems = () => {
+      props.shoppingcart.map(item => {
+        //const productSum = item.product.price * item.amount
+        cartItemSum += item.amount
+      })
+    }
+    let cartItemSum = 0
+    countCartItems()
+    setCartItems(cartItemSum)
+  }, [props.shoppingcart])
+
   return(
     <div>
-      <DesktopContainer loggeduser={loggeduser} notification>{props.children}</DesktopContainer>
-      <MobileContainer loggeduser={loggeduser} notification>{props.children}</MobileContainer>
+      <DesktopContainer loggeduser={loggeduser} notification cartItems={cartItems}>{props.children}</DesktopContainer>
+      <MobileContainer loggeduser={loggeduser} notification cartItems={cartItems}>{props.children}</MobileContainer>
     </div>
   )
 }
@@ -188,7 +204,8 @@ const mapStateToProps = (state) => {
   return {
     messages: state.messages,
     loggeduser: state.loggeduser,
-    notification: state.notification
+    notification: state.notification,
+    shoppingcart: state.shoppingcart
   }
 }
 export default connect(

@@ -79,7 +79,7 @@ const ShoppingCartLayout = (props) => {
 
   return(
     <ResponsiveContainer>
-      <Segment style={{ padding: '8em 0em' }} vertical>
+      <Segment style={{ padding: '4em 0em' }} vertical>
         <Container>
           <Divider
             as='h4'

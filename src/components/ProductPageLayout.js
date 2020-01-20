@@ -58,7 +58,7 @@ const ProductageLayout = (props) => {
 
   const ProductSegment = () => {
     return (
-      <Segment style={{ padding: '8em 0em' }} vertical>
+      <Segment style={{ padding: '4em 0em' }} vertical>
         <Grid container stackable verticalAlign='top'>
           <Grid.Row>
           <Grid.Column width={6}>
