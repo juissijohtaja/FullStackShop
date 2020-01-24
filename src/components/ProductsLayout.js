@@ -1,29 +1,15 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { fetchProducts, createProduct, removeProduct } from '../reducers/productReducer'
 
 import {
-  Button,
   Container,
   Divider,
-  Grid,
-  Header,
-  Icon,
-  Image,
-  List,
-  ListItem,
-  Menu,
-  Responsive,
-  Segment,
-  Sidebar,
-  Visibility,
-  Form,
-  Table
+  Segment
 } from 'semantic-ui-react'
 
 import {
-  BrowserRouter as Router,
-  Route, Link, Redirect, withRouter, NavLink
+  BrowserRouter as Router, withRouter
 } from 'react-router-dom'
 
 import Footer from './Footer'

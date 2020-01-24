@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import {
   BrowserRouter as Router,
-  Route, Link, Redirect, withRouter, NavLink
+  withRouter
 } from 'react-router-dom'
 
 import { fetchProducts, createProduct, removeProduct } from '../reducers/productReducer'

@@ -4,12 +4,7 @@ import Notification from './Notification'
 import {
   Button,
   Container,
-  Divider,
-  Grid,
-  Header,
   Icon,
-  Image,
-  List,
   Menu,
   Responsive,
   Segment,
@@ -20,8 +15,7 @@ import {
 } from 'semantic-ui-react'
 
 import {
-  BrowserRouter as Router,
-  Route, Link, Redirect, withRouter, NavLink
+  BrowserRouter as Router, withRouter, NavLink
 } from 'react-router-dom'
 import { connect } from 'react-redux'
 

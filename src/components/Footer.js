@@ -1,25 +1,17 @@
 import React from 'react'
 
 import {
-  Button,
   Container,
-  Divider,
   Grid,
   Header,
   Icon,
-  Image,
   List,
-  Menu,
-  Responsive,
   Segment,
-  Sidebar,
-  Visibility,
-  Form
 } from 'semantic-ui-react'
 
 import {
   BrowserRouter as Router,
-  Route, Link, Redirect, withRouter, NavLink
+  Link
 } from 'react-router-dom'
 
 const Footer = () => {

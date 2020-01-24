@@ -2,28 +2,14 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { fetchProducts, createProduct, removeProduct } from '../reducers/productReducer'
 import {
-  Button,
-  Container,
-  Divider,
-  Grid,
-  Header,
   Icon,
   Image,
-  List,
-  ListItem,
-  Menu,
-  Responsive,
-  Segment,
-  Sidebar,
-  Visibility,
-  Form,
-  Table,
   Card
 } from 'semantic-ui-react'
 
 import {
   BrowserRouter as Router,
-  Route, Link, Redirect, withRouter, NavLink
+  Link, withRouter
 } from 'react-router-dom'
 
 import Stars from './Stars'
