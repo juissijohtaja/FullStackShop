@@ -1,9 +1,5 @@
 import React from 'react'
-import {
-  Button
-} from 'semantic-ui-react'
 import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
 import {
   BrowserRouter as Router,
   Route, Redirect
@@ -19,8 +15,6 @@ import ShoppingCartLayout from './components/ShoppingCartLayout'
 import LoginPageLayout from './components/LoginPageLayout'
 import AdminLayout from './components/AdminLayout'
 
-import { fetchMessages } from './reducers/messageReducer'
-
 const App = (props) => {
 
   return (
@@ -34,7 +28,7 @@ const App = (props) => {
       <Route exact path="/valokuvaus" render={() =>
         <ProductsLayout category='valokuvaus' />
       } />
-      <Route exact path="/polkupyorat" render={() =>
+      <Route exact path="/polkupyörät" render={() =>
         <ProductsLayout category='polkupyörät' />
       } />
       <Route exact path="/hifi" render={() =>
@@ -64,14 +58,13 @@ const App = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    messages: state.messages,
     router: state.router,
     shoppingcart: state.shoppingcart,
     loggeduser: state.loggeduser
   }
 }
 export default connect(
-  mapStateToProps, { fetchMessages }
+  mapStateToProps, { }
 )(App)
 
 
