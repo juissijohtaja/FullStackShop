@@ -8,20 +8,12 @@ import { notificationSet } from '../reducers/notificationReducer'
 
 import {
   Button,
-  Container,
-  Divider,
   Grid,
   Header,
   Icon,
   Image,
-  List,
-  ListItem,
-  Menu,
-  Responsive,
   Segment,
-  Sidebar,
-  Visibility,
-  Form
+  Modal
 } from 'semantic-ui-react'
 
 import {
@@ -31,6 +23,8 @@ import {
 
 import Footer from './Footer'
 import ResponsiveContainer from './ResponsiveContainer'
+import ImageModal from './ImageModal'
+
 import Stars from './Stars'
 
 
@@ -56,13 +50,16 @@ const ProductageLayout = (props) => {
     props.notificationSet('Tuote lisätty ostoskoriin.', 'positive', 3)
   }
 
+
+
   const ProductSegment = () => {
     return (
       <Segment style={{ padding: '4em 0em' }} vertical>
         <Grid container stackable verticalAlign='top'>
           <Grid.Row>
-          <Grid.Column width={6}>
+            <Grid.Column width={6}>
               <Image bordered rounded size='large' src={productContent.image} />
+              <ImageModal imageSource={productContent.image} />
             </Grid.Column>
             <Grid.Column width={8}>
               <Header as='h3' style={{ fontSize: '2em' }}>
