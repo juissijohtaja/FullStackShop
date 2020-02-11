@@ -2,7 +2,6 @@ import PropTypes from 'prop-types'
 import React, { useState, useEffect } from 'react'
 import Notification from './Notification'
 import {
-  Button,
   Container,
   Icon,
   Menu,
@@ -11,11 +10,11 @@ import {
   Sidebar,
   Visibility,
   Label,
-  Dropdown
+  Image
 } from 'semantic-ui-react'
 
 import {
-  BrowserRouter as Router, withRouter, NavLink
+  BrowserRouter as Router, withRouter, NavLink, Link
 } from 'react-router-dom'
 import { connect } from 'react-redux'
 
@@ -62,27 +61,18 @@ const DesktopContainer = (props) => {
             size='large'
           >
             <Container>
+              <Menu.Item as={Link} to='/' style={{ padding: '0 1.4em 0.3em 0' }}><Image avatar src='https://firebasestorage.googleapis.com/v0/b/fullstackshop.appspot.com/o/logo%2Flogo-w.png?alt=media&token=2e56acde-0fde-4af3-92f9-c4d0353bb0dd'></Image></Menu.Item>
               <Menu.Item as={NavLink} to='/' exact>Etusivu</Menu.Item>
-              <Dropdown item text='Tuotteet'>
-                <Dropdown.Menu>
-                  <Dropdown.Item as={NavLink} to='/tuotteet'>Kaikki</Dropdown.Item>
-                  <Dropdown.Item as={NavLink} to='/valokuvaus'>Valokuvaus</Dropdown.Item>
-                  <Dropdown.Item as={NavLink} to='/polkupyörät'>Polkupyörät</Dropdown.Item>
-                  <Dropdown.Item as={NavLink} to='/hifi'>Hifi</Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
-              <Menu.Item position='right'>
+              <Menu.Item as={NavLink} to='/tuotteet'>Tuotteet</Menu.Item>
+              <Menu.Item as={NavLink} to='/valokuvaus'>Valokuvaus</Menu.Item>
+              <Menu.Item as={NavLink} to='/polkupyörät'>Polkupyörät</Menu.Item>
+              <Menu.Item as={NavLink} to='/hifi'>Hifi</Menu.Item>
+              <Menu.Item position='right' style={{ paddingBottom: '0.4em' }}>
                 {props.loggeduser.username ?
-                  <Button as={NavLink} to='/yllapito' inverted={!fixed}>
-                    Ylläpito
-                  </Button> :
-                  <Button as={NavLink} to='/kirjaudu' inverted={!fixed}>
-                    Kirjaudu
-                  </Button>
+                  <NavLink to='/kirjaudu' ><Icon name='user' /></NavLink> :
+                  <NavLink to='/kirjaudu' ><Icon name='user' /></NavLink>
                 }
-                <Button as={NavLink} to='/ostoskori' color={fixed? 'teal' : 'black'} inverted={!fixed} style={{ marginLeft: '0.5em' }}>
-                  <Icon aria-hidden='true' name='shopping basket' /> Ostoskori {props.cartItems>0 ? <Label color='red' size='small' floating>{props.cartItems}</Label> : null}
-                </Button>
+                <NavLink to='/ostoskori'><Icon name='shopping basket' style={{ marginLeft: '1.0em' }} />{props.cartItems>0 ? <Label color='red' size='small' circular style={{ position: 'relative', left:'-0.6em', top:'-1.0em' }}>{props.cartItems}</Label> : null}</NavLink>
               </Menu.Item>
 
             </Container>
@@ -122,8 +112,8 @@ const MobileContainer = (props) => {
         vertical
         visible={sidebarOpened}
       >
-        <Menu.Item as={NavLink} to='/' exact>Etusivu</Menu.Item>
-        <Menu.Item as={NavLink} to='/tuotteet'>Kaikki tuotteet</Menu.Item>
+        <Menu.Item as={NavLink} to='/'>Etusivu</Menu.Item>
+        <Menu.Item as={NavLink} to='/tuotteet'>Tuotteet</Menu.Item>
         <Menu.Item as={NavLink} to='/valokuvaus'>Valokuvaus</Menu.Item>
         <Menu.Item as={NavLink} to='/polkupyörät'>Polkupyörät</Menu.Item>
         <Menu.Item as={NavLink} to='/hifi'>Hifi</Menu.Item>
@@ -141,18 +131,15 @@ const MobileContainer = (props) => {
               <Menu.Item onClick={() => handleToggle()}>
                 <Icon name='sidebar' />
               </Menu.Item>
-              <Menu.Item position='right'>
+              <Menu.Item as={Link} to='/' position='right' style={{ left: '1.0em', padding: '0 0em 0.3em 0' }}>
+                <Image avatar src='https://firebasestorage.googleapis.com/v0/b/fullstackshop.appspot.com/o/logo%2Flogo-w.png?alt=media&token=2e56acde-0fde-4af3-92f9-c4d0353bb0dd'></Image>
+              </Menu.Item>
+              <Menu.Item position='right' style={{ paddingBottom: '0.4em' }}>
                 {props.loggeduser.username ?
-                  <Button as={NavLink} to='/yllapito' inverted>
-                    Ylläpito
-                  </Button> :
-                  <Button as={NavLink} to='/kirjaudu' inverted>
-                    Kirjaudu
-                  </Button>
+                  <NavLink to='/kirjaudu' ><Icon name='user' /></NavLink> :
+                  <NavLink to='/kirjaudu' ><Icon name='user' /></NavLink>
                 }
-                <Button as={NavLink} to='/ostoskori' inverted style={{ marginLeft: '0.5em' }}>
-                  <Icon aria-hidden='true' name='shopping basket' /> Ostoskori {props.cartItems>0 ? <Label color='red' size='small' floating>{props.cartItems}</Label> : null}
-                </Button>
+                <NavLink to='/ostoskori'><Icon name='shopping basket' style={{ marginLeft: '1.0em' }} />{props.cartItems>0 ? <Label color='red' size='small' circular style={{ position: 'relative', left:'-0.6em', top:'-1.0em' }}>{props.cartItems}</Label> : null}</NavLink>
               </Menu.Item>
             </Menu>
           </Container>
