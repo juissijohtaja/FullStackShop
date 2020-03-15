@@ -17,8 +17,8 @@ import ResponsiveContainer from './ResponsiveContainer'
 import { withRouter } from 'react-router-dom'
 
 const LoginPageLayout = (props) => {
-  const [username, setUserName] = useState('')
-  const [password, setPassword] = useState('')
+  const [username, setUserName] = useState('admin@admin.fi')
+  const [password, setPassword] = useState('admin123')
 
   useEffect(() => {
     console.log('loginpage loggeduser', props.loggeduser)
@@ -55,13 +55,13 @@ const LoginPageLayout = (props) => {
             </Header>
             <Form size='large' onSubmit={handleLogin}>
               <Segment stacked>
-                <Form.Input fluid icon='user' iconPosition='left' placeholder='E-mail address' value={username}
+                <Form.Input fluid icon='user' iconPosition='left' placeholder='Sähköpostiosoite' value={username}
                   onChange={({ target }) => setUserName(target.value)} />
                 <Form.Input
                   fluid
                   icon='lock'
                   iconPosition='left'
-                  placeholder='Password'
+                  placeholder='Salasana'
                   type='password'
                   value={password}
                   onChange={({ target }) => setPassword(target.value)}
@@ -73,10 +73,10 @@ const LoginPageLayout = (props) => {
               </Segment>
             </Form>
             <Message>
-              Vinkki: syötä kenttiin oikeat tunnukset
+              Kokeile tunnusta admin@admin.fi ja salasanaa admin123
             </Message>
             <Message>
-              <a href='/rekisteroidy'>Luo tunnukset</a>
+              Jos sinulla ei ole tunnuksia, voit <a href='/rekisteroidy'>luoda tunnukset</a>
             </Message>
           </Grid.Column>
         </Grid>

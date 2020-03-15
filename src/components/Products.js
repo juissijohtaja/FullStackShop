@@ -9,7 +9,8 @@ import {
   Icon,
   Image,
   ListItem,
-  Table
+  Table,
+  Message
 } from 'semantic-ui-react'
 
 import {
@@ -65,6 +66,11 @@ const Products = (props) => {
           )}
         </Table.Body>
       </Table>
+      <Message
+        warning
+        header='Huomio!'
+        content="Ainoastaan pääkäyttäjä voi poistaa tuotteita."
+      />
     </Container>
   )
 }

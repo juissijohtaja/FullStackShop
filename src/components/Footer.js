@@ -29,6 +29,9 @@ const Footer = () => {
               <List link inverted>
                 <List.Item as={Link} to='/'>Etusivu</List.Item>
                 <List.Item as={Link} to='/tuotteet'>Tuotteet</List.Item>
+                <List.Item as={Link} to='/valokuvaus'>Valokuvaus</List.Item>
+                <List.Item as={Link} to='/polkupyorat'>Polkupyörät</List.Item>
+                <List.Item as={Link} to='/hifi'>Hifi</List.Item>
               </List>
             </Grid.Column>
             <Grid.Column width={7}>

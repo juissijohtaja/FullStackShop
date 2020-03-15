@@ -29,6 +29,8 @@ const ProductForm = (props) => {
     }
   })
 
+  const admin = props.loggeduser.user.uid === 'GQ54E1iIjrMtX7orwFREnYHHiFD3' ? true : false
+
   const AddProduct = (e) => {
     e.preventDefault() // <- prevent form submit from reloading the page
 
@@ -123,11 +125,13 @@ const ProductForm = (props) => {
           placeholder='Valitse vaihtoehto'
           onChange={(e, { value }) => setRating(value)}
         />
-        <Button type='submit' fluid color='teal' size='big'>Tallenna</Button>
+        {admin ? <Button type='submit' fluid color='teal' size='big'>Tallenna</Button> :
+          <Button fluid disabled size='big'>Tallenna</Button> }
+
         <Message
           success
           header='Kaikki kunnossa!'
-          content="Lomake on täytetty oikein ja voidaan lähettää."
+          content="Lomake on täytetty oikein ja voidaan lähettää. Huom! Ainoastaan pääkäyttäjä voi lisätä tuotteita."
         />
         <Message
           warning
@@ -143,7 +147,8 @@ const mapStateToProps = (state) => {
   return {
     messages: state.messages,
     products: state.products,
-    notification: state.notification
+    notification: state.notification,
+    loggeduser: state.loggeduser
   }
 }
 export default connect(

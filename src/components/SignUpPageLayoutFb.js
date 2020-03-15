@@ -8,7 +8,8 @@ import {
   Grid,
   Header,
   Segment,
-  Form
+  Form,
+  Message
 } from 'semantic-ui-react'
 
 import Footer from './Footer'
@@ -62,10 +63,13 @@ const LoginPageLayout = (props) => {
                 />
 
                 <Button color='teal' fluid size='large'>
-            Rekisteröidy
+                  Rekisteröidy
                 </Button>
               </Segment>
             </Form>
+            <Message>
+              Jos sinulla on jo tunnukset, voit <a href='/kirjaudu'>kirjautua sisään</a>
+            </Message>
           </Grid.Column>
         </Grid>
       </Segment>
