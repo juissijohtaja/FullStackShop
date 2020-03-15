@@ -4,27 +4,17 @@ import { fetchProducts, createProduct, removeProduct } from '../reducers/product
 import { notificationSet } from '../reducers/notificationReducer'
 
 import {
-  Button,
   Container,
-  Divider,
-  Grid,
   Header,
   Icon,
   Image,
-  List,
   ListItem,
-  Menu,
-  Responsive,
-  Segment,
-  Sidebar,
-  Visibility,
-  Form,
   Table
 } from 'semantic-ui-react'
 
 import {
   BrowserRouter as Router,
-  Route, Link, Redirect, withRouter, NavLink
+  Link, withRouter
 } from 'react-router-dom'
 
 const Products = (props) => {
@@ -32,6 +22,10 @@ const Products = (props) => {
   useEffect(() => {
     props.fetchProducts()
   }, [])
+
+  const admin = props.loggeduser.user.uid === 'GQ54E1iIjrMtX7orwFREnYHHiFD3' ? true : false
+
+  console.log('admin', admin)
 
   const handleRemove = (product) => {
     //e.preventDefault()
@@ -63,7 +57,10 @@ const Products = (props) => {
               <Table.Cell>{product.description}</Table.Cell>
               <Table.Cell>{product.price}</Table.Cell>
               <Table.Cell>{product.category}</Table.Cell>
-              <Table.Cell><Icon link name='trash alternate' color='red' onClick={() => handleRemove(product)} /></Table.Cell>
+              <Table.Cell>
+                {admin ? <Icon link name='trash alternate' color='red' onClick={() => handleRemove(product)} /> :
+                  <Icon link name='trash alternate' disabled /> }
+              </Table.Cell>
             </Table.Row>
           )}
         </Table.Body>
@@ -76,7 +73,8 @@ const mapStateToProps = (state) => {
   return {
     messages: state.messages,
     products: state.products,
-    notification: state.notification
+    notification: state.notification,
+    loggeduser: state.loggeduser
   }
 }
 export default connect(

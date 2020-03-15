@@ -6,17 +6,6 @@ import { notificationSet } from '../reducers/notificationReducer'
 import {
   Button,
   Container,
-  Divider,
-  Grid,
-  Header,
-  Icon,
-  Image,
-  List,
-  Menu,
-  Responsive,
-  Segment,
-  Sidebar,
-  Visibility,
   Form,
   Message
 } from 'semantic-ui-react'

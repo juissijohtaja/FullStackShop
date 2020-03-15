@@ -15,6 +15,9 @@ import ShoppingCartLayout from './components/ShoppingCartLayout'
 import LoginPageLayout from './components/LoginPageLayout'
 import AdminLayout from './components/AdminLayout'
 
+import SignUpPageLayoutFb from './components/SignUpPageLayoutFb'
+
+
 const App = (props) => {
 
   return (
@@ -47,10 +50,14 @@ const App = (props) => {
         <ShoppingCartLayout />
       } />
       <Route path="/kirjaudu" render={() =>
-        props.loggeduser.username ? <Redirect to="/yllapito" /> : <LoginPageLayout />
+        props.loggeduser.user ? <Redirect to="/yllapito" /> : <LoginPageLayout />
       } />
       <Route path="/yllapito" render={() =>
-        props.loggeduser.username ? <AdminLayout /> : <Redirect to="/kirjaudu" />
+        props.loggeduser.user ? <AdminLayout /> : <Redirect to="/kirjaudu" />
+      } />
+
+      <Route path="/rekisteroidy" render={() =>
+        <SignUpPageLayoutFb />
       } />
     </Router>
   )

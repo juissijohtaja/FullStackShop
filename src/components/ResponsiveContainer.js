@@ -14,6 +14,7 @@ import {
 } from 'semantic-ui-react'
 
 import {
+  // eslint-disable-next-line no-unused-vars
   BrowserRouter as Router, withRouter, NavLink, Link
 } from 'react-router-dom'
 import { connect } from 'react-redux'
@@ -55,7 +56,7 @@ const DesktopContainer = (props) => {
         >
           <Menu
             fixed={fixed ? 'top' : null}
-            inverted={!fixed}
+            inverted
             pointing={!fixed}
             secondary={!fixed}
             size='large'
@@ -68,7 +69,7 @@ const DesktopContainer = (props) => {
               <Menu.Item as={NavLink} to='/polkupyörät'>Polkupyörät</Menu.Item>
               <Menu.Item as={NavLink} to='/hifi'>Hifi</Menu.Item>
               <Menu.Item position='right' style={{ paddingBottom: '0.4em' }}>
-                {props.loggeduser.username ?
+                {props.loggeduser ?
                   <NavLink to='/kirjaudu' ><Icon name='user' /></NavLink> :
                   <NavLink to='/kirjaudu' ><Icon name='user' /></NavLink>
                 }
@@ -135,7 +136,7 @@ const MobileContainer = (props) => {
                 <Image avatar src='https://firebasestorage.googleapis.com/v0/b/fullstackshop.appspot.com/o/logo%2Flogo-w.png?alt=media&token=2e56acde-0fde-4af3-92f9-c4d0353bb0dd'></Image>
               </Menu.Item>
               <Menu.Item position='right' style={{ paddingBottom: '0.4em' }}>
-                {props.loggeduser.username ?
+                {props.loggeduser ?
                   <NavLink to='/kirjaudu' ><Icon name='user' /></NavLink> :
                   <NavLink to='/kirjaudu' ><Icon name='user' /></NavLink>
                 }

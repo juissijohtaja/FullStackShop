@@ -1,31 +1,21 @@
 /* eslint-disable react/display-name */
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import { fetchMessages, createMessage, removeMessage } from '../reducers/messageReducer'
 import { logoutUser } from '../reducers/loginReducer'
 import { notificationSet } from '../reducers/notificationReducer'
 
 import {
   Button,
   Container,
-  Divider,
-  Grid,
   Header,
-  Icon,
-  Image,
-  List,
-  Menu,
-  Responsive,
   Segment,
-  Sidebar,
-  Visibility,
-  Form,
   Tab
 } from 'semantic-ui-react'
 
 import {
+  // eslint-disable-next-line no-unused-vars
   BrowserRouter as Router,
-  Route, Link, Redirect, withRouter, NavLink
+  withRouter
 } from 'react-router-dom'
 
 import Products from './Products'
@@ -36,6 +26,10 @@ import Orders from './Orders'
 
 
 const AdminLayout = (props) => {
+
+  useEffect(() => {
+    props.notificationSet('Welcome!', 'positive', 3)
+  }, [])
 
   const handleLogout = () => {
     props.logoutUser()
@@ -56,7 +50,7 @@ const AdminLayout = (props) => {
           Ylläpito
           </Header>
           <p style={{ fontSize: '1.33em' }}>
-            Terve {props.loggeduser.username}! Hallinnoi tuotteita.
+            Terve {props.loggeduser.user.email}! Hallinnoi tuotteita.
           </p>
           <p style={{ fontSize: '1.33em' }}>
             <Button color='orange' onClick={() => handleLogout()}><i aria-hidden='true' className='log out icon'></i> Kirjaudu ulos</Button>
@@ -77,5 +71,5 @@ const mapStateToProps = (state) => {
   }
 }
 export default connect(
-  mapStateToProps, { fetchMessages, createMessage, removeMessage, logoutUser, notificationSet }
+  mapStateToProps, { logoutUser, notificationSet }
 )(withRouter(AdminLayout))

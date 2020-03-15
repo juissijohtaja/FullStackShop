@@ -32,7 +32,7 @@ const ProductCard = (props) => {
   const amount = props.amount ? props.amount : 18
 
   return (
-    <Card.Group centered stackable>
+    <Card.Group stackable itemsPerRow={props.itemsPerRow ? props.itemsPerRow : '3'}>
       {props.products.filter(item => props.category ? item.category === props.category : true).slice(0, amount).sort((a, b) => b.rating - a.rating).map(product =>
         <Card as={Link} to={`/tuotteet/${product.friendlyUrl}`} key={product.name}>
           <Image src={product.image} wrapped ui={false} />

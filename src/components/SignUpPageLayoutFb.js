@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
-import { loginUser, logoutUser } from '../reducers/loginReducer'
+import { signupUser } from '../reducers/signupReducer'
 import { notificationSet } from '../reducers/notificationReducer'
 
 import {
@@ -8,8 +8,7 @@ import {
   Grid,
   Header,
   Segment,
-  Form,
-  Message
+  Form
 } from 'semantic-ui-react'
 
 import Footer from './Footer'
@@ -20,30 +19,25 @@ const LoginPageLayout = (props) => {
   const [username, setUserName] = useState('')
   const [password, setPassword] = useState('')
 
-  useEffect(() => {
-    console.log('loginpage loggeduser', props.loggeduser)
-  }, [])
-
-  const handleLogin = async (event) => {
+  const handleSignUp = async (event) => {
     event.preventDefault() // <- prevent form submit from reloading the page
 
     if (username && password) {
       try {
         const user = { username, password }
-        await props.loginUser(user)
-        props.notificationSet('Wrong credentials.', 'negative', 3)
+        props.signupUser(user)
+        props.notificationSet('Signup successful.', 'positive', 3)
 
         //clear the input
-        //setUserName('')
-        //setPassword('')
+        setUserName('')
+        setPassword('')
       } catch(exception) {
-        props.notificationSet('Wrong credentials.', 'negative', 3)
+        props.notificationSet('Signup unsuccessful.', 'negative', 3)
       }
     } else {
-      props.notificationSet('Username or password missing.', 'negative', 3)
+      props.notificationSet('Email or password missing.', 'negative', 3)
     }
   }
-
 
   return(
     <ResponsiveContainer>
@@ -51,9 +45,9 @@ const LoginPageLayout = (props) => {
         <Grid textAlign='center' style={{ height: '50vh' }} verticalAlign='middle'>
           <Grid.Column style={{ maxWidth: 450 }}>
             <Header as='h2' color='teal' textAlign='center'>
-                Tervetuloa takaisin!
+                Luo käyttäjätunnukset
             </Header>
-            <Form size='large' onSubmit={handleLogin}>
+            <Form size='large' onSubmit={handleSignUp}>
               <Segment stacked>
                 <Form.Input fluid icon='user' iconPosition='left' placeholder='E-mail address' value={username}
                   onChange={({ target }) => setUserName(target.value)} />
@@ -68,16 +62,10 @@ const LoginPageLayout = (props) => {
                 />
 
                 <Button color='teal' fluid size='large'>
-                  Kirjaudu sisään
+            Rekisteröidy
                 </Button>
               </Segment>
             </Form>
-            <Message>
-              Vinkki: syötä kenttiin oikeat tunnukset
-            </Message>
-            <Message>
-              <a href='/rekisteroidy'>Luo tunnukset</a>
-            </Message>
           </Grid.Column>
         </Grid>
       </Segment>
@@ -94,5 +82,5 @@ const mapStateToProps = (state) => {
   }
 }
 export default connect(
-  mapStateToProps, { loginUser, logoutUser, notificationSet }
+  mapStateToProps, { signupUser, notificationSet }
 )(withRouter(LoginPageLayout))
